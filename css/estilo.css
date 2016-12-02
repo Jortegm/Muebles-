@@ -1,0 +1,233 @@
+#contenedor{
+   /* border: 1px solid #000000;*/
+     background-color: #F5F3F3;
+	 width: 90%;
+     height: 1850px;
+	 margin-left:5%;
+     margin-right:5%;
+    -webkit-box-shadow: 0px -2px 42px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 0px -2px 42px 1px rgba(0,0,0,1);
+    box-shadow: 0px -2px 42px 1px rgba(0,0,0,1);
+}
+
+#cabecera1{
+   /* border : 1px solid black;*/
+    background-color: #F5F3F3;
+    height: 150px;
+    width: 100%;
+
+}
+
+#cabecera1 #letrero{
+    margin-top: 2%;
+    /*border : 1px solid black;*/
+    float:left;
+    margin-left: 3%;
+    height: 100px;
+    width: 300px;
+}
+
+
+#cabecera1 #datos{
+   /* border : 1px solid black;*/
+    text-align:center;
+    margin-top: 2%;
+    margin-left:5%;
+    width: 450px;
+    height:100px;
+    float: left;
+}
+
+#cabecera1 #administracion{
+   /* border : 1px solid black;*/
+    margin-top: 2%;
+    margin-right:5%;
+    width: 250px;
+    height:100px;
+    float: right;
+
+}
+#registro{
+  /*  border:1px solid black;*/
+    height:75px;
+    width:75px;
+    float:right;
+    margin-top:5%;
+    margin-right:8%;
+}
+#buscador{
+   /* border:1px solid black;*/
+    height:75px;
+    width:75px;
+    float:left;
+    margin-top:5%;
+    margin-left:8%;
+}
+
+#menu {
+ margin-top: 2%;
+ border: 1px solid green;
+ position:relative;
+
+ float: left;
+ width: 100%;
+ height: 50px;
+ background-color: #1c4b69;
+
+}
+
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+
+    margin-left: 3%;
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: #FFF;
+    text-align: center ;
+    font-family: "Times New Roman", Georgia, Serif ;
+    font-size: 18px;
+    padding: 14px 26px;
+    text-decoration: none;
+
+}
+
+li a:hover {
+    background-color: #1c4b69;
+
+}
+
+
+
+#ofertas{
+    margin-top: 1%;
+    float:left;
+    border: 1px solid black;
+    height: 350px;
+    width: 100%;
+}
+
+#ofeDatos{
+	height: 350px;
+    width: 80%;
+    float:left;
+    margin-left: 10%;
+
+}
+
+
+#destacados{
+    margin-top: 2%;
+    height: 850px;
+    width: 100%;
+   /* border:1px solid black;*/
+    float:left;
+
+}
+#destacados #cajadestaca{
+    border:1px solid black;
+    height: 750px;
+    width: 100%;
+    text-align:center;
+
+}
+
+#destaca1{
+    margin-top: 3%;
+    margin-right: 6%;
+	background:#F9F9F9;
+    border:1px solid black;
+    /*border-style: outset;*/
+    float:right;
+    width: 280px;
+    height: 300px;
+}
+#foto {
+   /*border: 1px solid black;*/
+	margin:0 auto;
+	width: 240px;
+	height: 210px;
+    text-align: center;
+
+}
+#fot{
+    margin:0 auto;
+    background-color:F9F9F9;
+}
+
+.button {
+    margin-top: 8%;
+    margin-left:2%;
+    background-color: #555555; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#comprar{
+   /* border:1px solid black;*/
+    margin-top:1%;
+    float:left;
+    margin-left:2%;
+    height: 200px;
+    width: 180px;
+
+}
+
+#quienessomos{
+    /*border:1px solid black;*/
+    float:left;
+    margin-left:2%;
+    margin-top:1%;
+    height: 200px;
+    width:180px;
+
+}
+#contacto{
+   /* border:1px solid black;*/
+    float:left;
+    margin-top:1%;
+    margin-left:2%;
+    height: 200px;
+    width: 180px;
+}
+#mandaofertas{
+   /* border:1px solid black;*/
+    margin-top:1%;
+    float:right;
+    height: 200px;
+    width: 300px;
+    text-align:center;
+
+}
+
+ #pie {
+  border-top: 6px solid #B2A1A1;
+  background-color: lightgrey;
+  position:relative;
+  top:2%;
+ /* margin-left:4%;
+  margin-right:4%;*/
+  width:100%;
+  height: 225px;
+  clear: both;
+}
+
+p{font-size: 18px; color:#1C4B69; font-family: "Times New Roman", Georgia, Serif;}
+h1{color:#1C4B69; font-family: "Times New Roman", Georgia, Serif;margin-left:5%;}
+h5{text-align:center;color:#7F6472}
+li{margin:left;color:#7F6472; text-align:center;}
