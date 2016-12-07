@@ -6,7 +6,6 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./css
 ?>
 
 <div id="contenedor">
-<p>Prueba</p>
 <!-- creamos la cabecera con 3 div donde va el logo, buscador y redes sociales y acceso de los usuarios.-->
         <div id="cabecera1">
             <!--div para letrero de la empresa -->
@@ -24,38 +23,62 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./css
             <!-- div para iconos administracion -->
             <div id ="administracion">
                 <div id="registro">
-                  <a href="#" ><img src="./img/registro_icono.png"title="Entrar o Registrarse">
+                  <a href="./php/login.php" ><img src="./img/registro_icono.png" title="Entrar o Registrarse" ></a>
                 </div>
+
                 <div id="buscador">
-                  <a href="#" ><img src="./img/unnamed.png"title="Buscador">
+                  <a href="#" ><img src="./img/unnamed.png"title="Buscador"></a>
                 </div>
             </div>
-       </div>
+        </div>
 <!-- creamos el menu mediante un div y dentro una lista horizontal-->
         <div id ="menu">
-            <ul>
-                <li class='top'><a class='top_link' href='#'><span>INICIO</span></a></li>
+            <ul id="menuprincipal">
+                <li class="top"><a href='#'><span>INICIO</span></a></li>
+                <li class="top"><a  href='#'><span class='down'>Cocina </span></a>
                 </li>
-                <li class='top'><a class='top_link' href='#'><span class='down'>Cocina </span></a>
+                <li class="top"><a  href='#'><span class='down'>Baño</span></a>
                 </li>
-                <li class='top'><a class='top_link' href='#'><span class='down'>Baño</span></a>
+                <li class="top"><a  href='#'><span class='down'>Dormitorio</span></a>
                 </li>
-                <li class='top'><a class='top_link' href='#'><span class='down'>Dormitorio</span></a>
+                <li class="top"><a  href='#'><span class='down'>Salon</span></a>
                 </li>
-                <li class='top'><a class='top_link' href='#'><span class='down'>Salon</span></a>
-                </li>
-                <li class='top'><a class='top_link' href='#'><span class='down'>Dormitorio</span></a>
-                </li><li class='top'><a class='top_link' href='#'><span class='down'>Dormitorio</span></a>
-                </li>
-                
-			</ul>		
-
+               
+    		</ul>		
         </div>
 <!-- creamos con un div la zona donde irá el slider con las ofertas mas destacadas-->
         <div id="ofertas">
-            <p>hola</p>
-        
-        </div>
+         	<h1>OFERTAS DEL MES </h1>
+
+			<div class="w3-content w3-display-container">
+			  <img class="mySlides" src="./img/ofertas mes/cocinasl.png" style="width:100%">
+			  <img class="mySlides" src="./img/ofertas mes/oferta3.jpg" style="width:100%">
+			  <img class="mySlides" src="./img/ofertas mes/Mobiliario.jpg" style="width:100%">
+				 <a class="prev" onclick="plusDivs(-1)">&#10094;</a>
+  				 <a class="next" onclick="plusDivs(1)">&#10095;</a>
+			</div>
+			
+			
+			<script>
+					var slideIndex = 1;
+					showDivs(slideIndex);
+
+					function plusDivs(n) {
+					  showDivs(slideIndex += n);
+					}
+
+					function showDivs(n) {
+					  var i;
+					  var x = document.getElementsByClassName("mySlides");
+					  if (n > x.length) {slideIndex = 1}    
+					  if (n < 1) {slideIndex = x.length}
+					  for (i = 0; i < x.length; i++) {
+						 x[i].style.display = "none";  
+					  }
+					  x[slideIndex-1].style.display = "block";  
+					}
+			</script>
+		</div>
             
 <!--creamos la seccion donde estaran los productos mas destacados-->
         <div id ="destacados">
@@ -106,7 +129,7 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./css
              <div id="foto">
                     <img src="./img/Articulos destacados/sillon-relax-reposapies-marron.png" width="200px" heigth="200px"  id="fot"/>
                     <p>Sillon reconfortable</p>
-                    <a href="#" class="button"/>Añadir</a>
+                    <a href="#"  class="button" />Añadir</a>
                 </div>
             </div>
 
@@ -117,38 +140,33 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./css
         <div id="pie">
             <div id="comprar">
                 <h5>PORQUE COMPRAR</h5>
-                <ul>
-                    <li>Como comprar</li>
-                    <li>Formas de Pago</li>
-                    <li>Gastos de envio</li>
-                    <li>Preguntas frecuentes</li>
-                    <li>Opiniones de Clientes</li>
-                    <li>Ultimos Comentarios</li>
-                </ul>
+                    <b>Como comprar</b><br/>
+                    <b>Formas de Pago</b><br/>
+                    <b>Gastos de envio</b><br/>
+                    <b>Preguntas frecuentes</b><br/>
+                    <b>Opiniones de Clientes</b><br/>
+                    <b>Ultimos Comentarios</b><br/>
             </div>
 
             <div id="quienessomos">
             <h5>QUIENES SOMOS</h5>
-                <ul>
-                    <li>Quienes Somos</li>
-                    <li>Nuestra tienda</li>
-                    <li>Condiciones de compra</li>
-                    <li>Devoluciones</li>
-                    <li>Garamtias</li>
-                    <li>Fabricantes</li>
-                    <li>Afiliados</li>
-                </ul>
+                <b>Nuestra tienda</b><br/>
+                <b>Condiciones de compra</b><br/>
+                <b>Devoluciones</b><br/>
+                <b>Garamtias</b><br/>
+                <b>Fabricantes</b><br/>
+                <b>Afiliados</b><br/>
+                
             </div>
 
             <div id="contacto">
             <h5>CONTACTAR</h5>
-                <ul>
-                    <li>Centro de soporte</li>
-                    <li>Aviso Legal</li>
-                    <li>Privacidad</li>
-                    <li>Politica de cookies</li>
-                    <li>Trabaja con nosotros</li>
-                </ul>
+                <b>Centro de soporte</b><br/>
+                    <b>Aviso Legal</b><br/>
+                    <b>Privacidad</b><br/>
+                    <b>Politica de cookies</b><br/>
+                    <b>Trabaja con nosotros</b><br/>
+                
              </div>
 
             <div id="mandaofertas">

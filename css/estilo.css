@@ -76,20 +76,20 @@
 
 }
 
- ul {
+ #menuprincipal {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-li {
 
+.top {
     margin-left: 3%;
     float: left;
 }
 
-li a {
+.top a  {
     display: inline-block;
     color: #FFF;
     text-align: center ;
@@ -100,7 +100,7 @@ li a {
 
 }
 
-li a:hover {
+.top a:hover {
     background-color: #1c4b69;
 
 }
@@ -108,19 +108,34 @@ li a:hover {
 
 
 #ofertas{
-    margin-top: 1%;
-    float:left;
-    border: 1px solid black;
-    height: 350px;
+  	height: 580px;
     width: 100%;
+	float:left;
+    margin-top: 1%;
 }
 
-#ofeDatos{
-	height: 350px;
-    width: 80%;
-    float:left;
-    margin-left: 10%;
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 85%;
+  width: auto;
+  /*margin-top: -22px;*/
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+.next {
+  margin-right:5.45%;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
 
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
 }
 
 
@@ -182,7 +197,7 @@ li a:hover {
    /* border:1px solid black;*/
     margin-top:1%;
     float:left;
-    margin-left:2%;
+    margin-left:4%;
     height: 200px;
     width: 180px;
 
@@ -227,7 +242,87 @@ li a:hover {
   clear: both;
 }
 
+
+/*pagina ADministracion*/
+#Cont{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    width:100%;
+    height: 850px;
+}
+#listaConfiguracion{
+    float:left;
+    margin-left:2%;
+    height: 600px;
+    width: 200px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+}
+
+#mostrarConfiguracion{
+    float:left;
+    margin-right:2%;
+    height: 600px;
+    width: 78%;
+    border-top: 2px solid black;
+    border-left:2px solid black;
+}
+/*---------------------------------------------------------*/
+
+/*estilo para la pagina Login*/
+#centrado{
+    height: 100%;
+    width: 100%;
+    background-color: #F5F3F3;
+    border-top:2px solid #1c4b69;
+    border-left: 2px solid #1c4b69;
+    border-right:2px solid #1c4b69 ;
+}
+
+#centrarLogo{
+    
+    height: 100px;
+    width: 300px;
+    margin: 0 auto; 
+}
+
+#loginEntrada{
+    
+    margin: 0 auto;
+    height: 500px;
+    width: 500px;
+    margin-top:2%;
+
+}
+
+fieldset{
+    width: 500px;
+    height: 400px;
+
+}
+input, select {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label{
+    font-size: 25px;
+    color:#1C4B69;
+}
+
+#salir{
+    float:right;
+    margin-top: 12%;
+    margin-left:50%;
+}
 p{font-size: 18px; color:#1C4B69; font-family: "Times New Roman", Georgia, Serif;}
 h1{color:#1C4B69; font-family: "Times New Roman", Georgia, Serif;margin-left:5%;}
 h5{text-align:center;color:#7F6472}
-li{margin:left;color:#7F6472; text-align:center;}
+li{margin:left;margin-left:5%; text-align:left;}
+b {color:#7F6472; text-align:center;font-size: 14px}
+a { margin:left; margin-left:5%; font-size: 20px; color: firebrick;   }

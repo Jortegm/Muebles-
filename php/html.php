@@ -5,7 +5,7 @@
 *#param $link se utilizara para añadir el link de CSS
 */
 class Html {
-    public static function AbrirHtml($titulo,$link)
+    public static function AbrirHtml($titulo, $link)
     {
         echo "<!DOCTYPE html>";
         echo "<html><head><title>$titulo</title>";
