@@ -4,6 +4,8 @@ require_once("./html.php");
 HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/estilo.css'");
 
 
+ 
+
 ?>
 
 <div id ="centrado">
@@ -26,10 +28,21 @@ HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/
                     <br/>
                     <br/>
                     <input type='submit' value='Enviar'>
-                     <div id ="salir">
-                            <a href="./../index.php"><img src="./../img/salir.png" title="Volver a Página Principal"/></a> 
-                        </div>
+                    
+                    <br/>                
+                    <div id ="salir">
+                       <a href="./../index.php"><img src="./../img/salir.png" title="Volver a Página Principal"/></a> 
+                    </div>
                     </fieldset>
             </form>
         </div>
 </div>
+
+
+<?php
+
+
+
+Html::CerrarHtml();
+
+?>

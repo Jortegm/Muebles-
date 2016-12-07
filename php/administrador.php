@@ -44,7 +44,7 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./../
             <a>Listados</a><br/>
             <ul style ="list-style-type:square">
                 <li><a href="./ListadoCategorias.php">Listado de Categorias</a></li>
-                <li>Listado de Producto </li>
+                <li><a href="./listadoproductos.php">Listado de Producto</a></li>
             </ul>
         </div>
             <div id="mostrarConfiguracion"> 
