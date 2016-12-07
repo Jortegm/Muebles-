@@ -243,7 +243,7 @@
 }
 
 
-/*pagina ADministracion*/
+/*pagina Administracion*/
 #Cont{
     border-top: 2px solid black;
     border-bottom: 2px solid black;
@@ -254,7 +254,7 @@
     float:left;
     margin-left:2%;
     height: 600px;
-    width: 200px;
+    width: 300px;
     border-top: 2px solid black;
     border-right: 2px solid black;
 }
@@ -263,7 +263,7 @@
     float:left;
     margin-right:2%;
     height: 600px;
-    width: 78%;
+    width: 70%;
     border-top: 2px solid black;
     border-left:2px solid black;
 }

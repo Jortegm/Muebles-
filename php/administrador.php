@@ -28,9 +28,6 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./../
                 <div id="registro">
                 <a href="./../index.php" title="Volver">Salir de Administracion </a>
                 </div>
-                <div id="buscador">
-                  <a href="#" ><img src="../img/unnamed.png" title="Buscador"><a/>
-                </div>
             </div>
        </div>
 <div id="Cont">
@@ -46,12 +43,11 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./../
             </ul>
             <a>Listados</a><br/>
             <ul style ="list-style-type:square">
-                <li>Listado de Categorias</li>
+                <li><a href="./ListadoCategorias.php">Listado de Categorias</a></li>
                 <li>Listado de Producto </li>
             </ul>
         </div>
             <div id="mostrarConfiguracion"> 
-            
             
            
             </div>
