@@ -3,8 +3,45 @@
 require_once("./html.php");
 HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/estilo.css'");
 
+    try{
 
- 
+        if(!empty($_POST)){
+            $user = $_POST["usuario"];
+            $psswd = $_POST["contrasena"];
+            if (login($user,$passwd)){
+            //Si coninciden usuario y congtraseña
+                session_start(); //iniciamos la sesion
+                $_SESSION["logeado"]=1; //creamos una variable logeado=1 (1)
+                $_SESSION["usuario"]=$_POST["usuario"];
+            /*almaceno el usuario como variable de sesion para utilizarlo luego en mi aplicacion*/
+                header ("Location: administrador.php"); //todo es correcto estoy validado abro mi aplicacion web
+             }
+            else {
+                //si no existe se va a login.php
+                header("Location: login.php");
+            }
+        }
+            /*esta funcion devuelve 1 si el par usuario/contraseña
+            coinciden con los almacenados en la base de datos. Utilizo PDO para conectar con la base de datos.
+             Además uso una consulta paramétrica para evitar SQLInjection
+            */
+            function login($usuario,$passwd){
+                /*asignar valores pertinentes al crear el objeto PDO en mi caso prueba*/
+                $conectar = new PDO ("mysql:dbname=Muebles;host=127.0.0.1","root","");
+                $conectar -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $datos = $conectar ->query ("select NombreUsuario, ContraseñaUsuario from Usuarios");
+                $q->bindParam(':usuario',$usuario);
+                $q->execute();
+                $row = $q->fetch(PDO::FETCH_ASSOC);
+                if ($row["contrasena"]=="" || $row["contrasena"]!=$passwd){
+                    return 0; // usuario/contraseña incorrecta
+                }
+                    else return 1; // usuario/contraseña correcta
+                $db=null;
+            }
+
+
+
 
 ?>
 
@@ -41,7 +78,12 @@ HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/
 
 <?php
 
-
+}catch (PDOException $e) {
+    echo "Lo Sentimos, El usuario no es Valido.";
+    echo "<br/>";
+    echo "Por Favor, introduzca una contraseña Valida o Registresé.";
+    echo "<br/>";
+}
 
 Html::CerrarHtml();
 

@@ -16,9 +16,8 @@ try {
             function listaCategorias ($conectar){
                 //consulta de la base de datos de muebles con las Categorias;
                   $datos = $conectar ->query ("select CategoriasID, NombreCategorias, DescripcionCategorias from Categorias");
-                $mysqli = new mysqli("localhost", "root", "", "Muebles");
-
-                 if ( $mysqli ->query("select CategoriaID from Categorias") == false){
+              /*Tdo se hace con PDO:: nada de cosas raras*/
+                 if ($datos){
                      echo"<h2>No has insertado todavia ningún categoria</h2>";
                  }else{  
                   echo "<table border=2>";
