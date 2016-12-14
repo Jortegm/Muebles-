@@ -4,7 +4,7 @@ require_once("./html.php");
 HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/estilo.css'");
 
     try{
-function login($usuario,$passwd){
+        function login($usuario,$passwd){
                 /*asignar valores pertinentes al crear el objeto PDO en mi caso prueba*/
                 $conectar = new PDO ("mysql:dbname=Muebles;host=127.0.0.1","root","");
                 $conectar -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
