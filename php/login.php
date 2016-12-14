@@ -4,11 +4,24 @@ require_once("./html.php");
 HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/estilo.css'");
 
     try{
-
+function login($usuario,$passwd){
+                /*asignar valores pertinentes al crear el objeto PDO en mi caso prueba*/
+                $conectar = new PDO ("mysql:dbname=Muebles;host=127.0.0.1","root","");
+                $conectar -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $datos = $conectar ->query ("select NombreUsuario, ContrasenaUsuario from usuarios");
+                $datos->bindParam(':usuario',$usuario);
+                $datos->execute();
+                $row = $datos->fetch(PDO::FETCH_ASSOC);
+                if ($row["ContrasenaUsuario"]=="" || $row["ContrasenaUsuario"]!=$passwd){
+                    return 0; // usuario/contraseña incorrecta
+                }
+                    else return 1; // usuario/contraseña correcta
+            }
         if(!empty($_POST)){
             $user = $_POST["usuario"];
             $psswd = $_POST["contrasena"];
-            if (login($user,$passwd)){
+
+            if (login($user,$psswd)){
             //Si coninciden usuario y congtraseña
                 session_start(); //iniciamos la sesion
                 $_SESSION["logeado"]=1; //creamos una variable logeado=1 (1)
@@ -18,32 +31,22 @@ HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/
              }
             else {
                 //si no existe se va a login.php
-                header("Location: login.php");
-            }
+                echo "Usuario y Constraseña no Validos";  
+                }
         }
             /*esta funcion devuelve 1 si el par usuario/contraseña
             coinciden con los almacenados en la base de datos. Utilizo PDO para conectar con la base de datos.
              Además uso una consulta paramétrica para evitar SQLInjection
             */
-            function login($usuario,$passwd){
-                /*asignar valores pertinentes al crear el objeto PDO en mi caso prueba*/
-                $conectar = new PDO ("mysql:dbname=Muebles;host=127.0.0.1","root","");
-                $conectar -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $datos = $conectar ->query ("select NombreUsuario, ContraseñaUsuario from Usuarios");
-                $q->bindParam(':usuario',$usuario);
-                $q->execute();
-                $row = $q->fetch(PDO::FETCH_ASSOC);
-                if ($row["contrasena"]=="" || $row["contrasena"]!=$passwd){
-                    return 0; // usuario/contraseña incorrecta
-                }
-                    else return 1; // usuario/contraseña correcta
-                $db=null;
-            }
+            
 
 
 
 
 ?>
+<!--Para acceder como administrador a la zona Administrativa de la pagina
+ usuario = admin;
+ psswd   = 1234 ;-->
 
 <div id ="centrado">
             <div id="centrarLogo">

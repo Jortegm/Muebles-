@@ -17,4 +17,9 @@ class Html {
     {
         echo "</body></html>";
     }
+
+
+    public static function errorDiv(){
+        alert("USUARIOS O CONTRASEÑA NO VALIDOS");
+    }
 }
