@@ -1,0 +1,80 @@
+#contenedor{
+   /* border: 1px solid #000000;*/
+     background-color: #F5F3F3;
+	 width: 90%;
+     height: 1850px;
+	 margin-left:5%;
+     margin-right:5%;
+    -webkit-box-shadow: 0px -2px 42px 1px rgba(0,0,0,1);
+    -moz-box-shadow: 0px -2px 42px 1px rgba(0,0,0,1);
+    box-shadow: 0px -2px 42px 1px rgba(0,0,0,1);
+}
+
+#cabecera1{
+   /* border : 1px solid black;*/
+    background-color: #F5F3F3;
+    height: 150px;
+    width: 100%;
+
+}
+
+#cabecera1 #letrero{
+    margin-top: 2%;
+    /*border : 1px solid black;*/
+    float:left;
+    margin-left: 3%;
+    height: 100px;
+    width: 300px;
+}
+
+
+#cabecera1 #datos{
+   /* border : 1px solid black;*/
+    text-align:center;
+    margin-top: 2%;
+    margin-left:5%;
+    width: 450px;
+    height:100px;
+    float: left;
+}
+
+#cabecera1 #administracion{
+   /* border : 1px solid black;*/
+    margin-top: 2%;
+    margin-right:5%;
+    width: 250px;
+    height:100px;
+    float: right;
+
+}
+#registro{
+  /*  border:1px solid black;*/
+    height:75px;
+    width:75px;
+    float:right;
+    margin-top:5%;
+    margin-right:8%;
+}
+///**********************************************************************************************/
+.anadir {
+	height: 200px;
+	font-size:12px;
+    padding:  5px 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+
+}
+.btn {
+  display: block;
+  margin: 1em 0;
+}
+textarea{
+	width: 600px;
+}
+
+label{
+	float:left;
+	margin-left:5%;
+    font-size: 20px;
+    color:#1C4B69;
+}

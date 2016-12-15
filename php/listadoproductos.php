@@ -20,7 +20,7 @@ try{
 
   function listaProductos($conectar){
                 //consulta de la base de datos de muebles con las Categorias;
-                  $datos = $conectar ->query ("select ProductosID, NombreProductos, DescripcionProductos from Productos");
+                  $datos = $conectar ->query ("select ProductosID, NombreProductos, DescripcionProductos,Precio from Productos");
                 $mysqli = new mysqli("localhost", "root", "", "Muebles");
 
                  if ( $mysqli ->query("select ProductosID from Productos") == false){
@@ -41,7 +41,6 @@ try{
                         echo "<td>".$productos["NombreProductos"]."</td>";
                         echo "<td>".$productos["DescripcionProductos"]."</td>";
                         echo "<td>".$productos["Precio"]."</td>";
-                        echo "<td>hola</td>";
                         }
                  }
                     
