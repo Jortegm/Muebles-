@@ -3,6 +3,11 @@
 require_once("./php/html.php");
 HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./css/estilo.css'");
 
+ 		$conectar = new PDO ("mysql:dbname=Muebles;host=127.0.0.1","root","");
+        //añadimos los atributos;
+        $conectar -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ 		$datos = $conectar ->query ("select ProductosID, NombreProductos, DescripcionProductos,Precio from Productos");
+
 ?>
 
 <div id="contenedor">
@@ -23,11 +28,15 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./css
             <!-- div para iconos administracion -->
             <div id ="administracion">
                 <div id="registro">
-                  <a href="./php/login.php" ><img src="./img/registro_icono.png" title="Entrar o Registrarse" ></a>
+					<a href="./php/login.php" ><img src="./img/registro_icono.png" title="Entrar o Registrarse" ></a>
                 </div>
 
                 <div id="buscador">
-                  <a href="#" ><img src="./img/unnamed.png"title="Buscador"></a>
+					<form id="buscador" name="buscador" method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+						<input id="buscar" name="buscar" type="search" placeholder="Buscar aquí..." autofocus >
+						<input type="submit" name="buscador" class="boton peque aceptar" value="Buscar">
+					</form>
+
                 </div>
             </div>
         </div>

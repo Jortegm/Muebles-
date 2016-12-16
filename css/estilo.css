@@ -20,20 +20,20 @@
 
 #cabecera1 #letrero{
     margin-top: 2%;
-    /*border : 1px solid black;*/
+   /* border : 1px solid black;*/
     float:left;
-    margin-left: 3%;
+    margin-left: 1%;
     height: 100px;
     width: 300px;
 }
 
 
 #cabecera1 #datos{
-   /* border : 1px solid black;*/
+  /* border : 1px solid black;*/
     text-align:center;
     margin-top: 2%;
     margin-left:5%;
-    width: 450px;
+    width: 350px;
     height:100px;
     float: left;
 }
@@ -42,26 +42,23 @@
    /* border : 1px solid black;*/
     margin-top: 2%;
     margin-right:5%;
-    width: 250px;
+    width: 350px;
     height:100px;
     float: right;
 
 }
 #registro{
-  /*  border:1px solid black;*/
+   /* border:1px solid black;*/
     height:75px;
     width:75px;
     float:right;
     margin-top:5%;
-    margin-right:8%;
 }
 #buscador{
-   /* border:1px solid black;*/
+    /*border:1px solid black;*/
     height:75px;
-    width:75px;
+    width:195px;
     float:left;
-    margin-top:5%;
-    margin-left:8%;
 }
 
 #menu {

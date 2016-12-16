@@ -1,7 +1,8 @@
 <?php
 
 require_once("./html.php");
-HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./../css/estiloAD.css'");
+HTML::abrirhtml("Nueva Categoria","<link rel='stylesheet' type='text/css' href='./../css/estiloAD.css'");
+
 
 
 ?>
@@ -28,10 +29,10 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
 
 <?php
 
-		 if (isset($POST["idCategorias"])) {
-			$idCategoria = $POST["idCategorias"];
+		 if (isset($POST["IdCateg"])) {
+			$idCateg = $POST["IdCateg"];
 		}else {
-			$idCategoria = "";
+			$idCateg = "";
 		}
 
 			try {
@@ -44,78 +45,81 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
 				echo "Se ha producido un error por que no existe la base de datos Muebles";
 				echo "<br>";
 			}
-  function listaCategorias($conectar){
+  	function listaCategorias($conectar){
                 //consulta de la base de datos de muebles con las Categorias;
-                  $datos = $conectar ->query ("select CategoriasID, NombreCategorias, DescripcionCategorias,ProductosID from Categorias");
-                $mysqli = new mysqli("localhost", "root", "", "Muebles");
+                  $datos = $conectar ->query ("select CategoriasID, NombreCategorias, DescripcionCategorias from categorias");
 
-                 if ( $mysqli ->query("select CategoriasID from categorias") == false){
-                     echo"<h2>No has insertado todavia ningún categoria</h2>";
-                 }else{
                   echo "<table border=1px solid black>";
                   echo "<tr>";
-                  echo "<td>C&oacute;digo Categorias</td>";
-                  echo "<td>Nombre Categoria </td>";
-                  echo "<td>Descripcion Categorias</td>";
-				  echo "<td colspan='2'>Tareas de actualizacion</td>";
+					  echo "<td>C&oacute;digo Categorias</td>";
+					  echo "<td>Nombre Categorias </td>";
+					  echo "<td>Descripcion Categorias</td>";
+					  echo "<td colspan='2'>Tareas de actualizacion</td>";
                   echo "</tr>";
-                  echo "<tr>";
 
+ 				while ($categorias = $datos ->fetch()){
+				 echo "<tr>";
 
-                        while ($categorias = $datos ->fetch()){
                         echo "<td>".$categorias["CategoriasID"]."</td>";
                         echo "<td>".$categorias["NombreCategorias"]."</td>";
                         echo "<td>".$categorias["DescripcionCategorias"]."</td>";
-                        echo "<td>".$categorias["ProductosID"]."</td>";
-						echo "<td><a href='modificar.php?ProductosID=".$categorias['CategoriasID']."'>Modificar</a></td>";
-						echo "<td><a href='borrar.php?ProductosID=".$categorias['CategoriasID']."'>Borrar</a> </td> ";
 
+						echo "<td ><a href='modificarCategorias.php?CategoriasID=".$categorias["CategoriasID"]."'>Modificar</a></td>";
+						echo "<td><a href='eliminarCategorias.php?CategoriasID=".$categorias['CategoriasID']."'>Borrar</a></td> ";
                         }
-                 }
-
                  echo "</tr>";
+				 }
 	  			 echo "</table>";
-            }
+
 ?>
 <?php
 
-       if(!empty($_POST)){
-            //hemos realizado el envío
-		   $idCategorias = $_POST["idCategorias"];
-			$nombre=$_POST["nCategorias"];
-            $descripcion=$_POST["dCategorias"];
-            $error=false;
 
-			if ($nombre==""){
+    $descripcion="";
+    $error=false;
+
+    $nombre="";
+        if(!empty($_POST))
+        {
+            //hemos realizado el envío
+            $idCateg=$_POST["IdCateg"];
+            $error=false;
+            $descripcion=$_POST["dCateg"];
+            $nombre=$_POST["nCateg"];
+
+            if ($descripcion=="")
+            {
+                $mensajeDescripcion="Rellene el campo descripcion";
+                $error=true;
+			}
+
+            if ($nombre=="")
+            {
                 $mensajeNombre="Rellene el campo nombre";
                 $error=true;
             }
-
-
-            if ($descripcion==""){
-                $mensajeDescripcion="Rellene el campo descripcion";
-                $error=true;
-            }
-
-         }
+        }
     ?>
 
 
 
         <form method="POST" name="fvalida" action="" enctype="multipart/form-data">
             <br>
-              <label> ID</label>
-                <input class="<?php echo isset($mensajeNombre)?'inputError':''?>" type="text" id="idCategorias" name="idCategorias" />
+
+
+                <label> ID Categorias</label>
+                <input class="<?php echo isset($mensajeNombre)?'inputError':''?>" type="text" id="IdCateg" name="IdCateg" />
                 <?php echo isset($mensajeNombre)?"<font color='red' font-size:'12px'><span class='spanError'>$mensajeNombre</span>":""?><br><br><br>
 
-                <label> Nombre de la Categoria</label>
-                <input class="<?php echo isset($mensajeNombre)?'inputError':''?>" type="text" id="nCategorias" name="nCategorias" />
+                <label> Nombre Categoria</label>
+                <input class="<?php echo isset($mensajeNombre)?'inputError':''?>" type="text" id="nCateg" name="nCateg" />
                 <?php echo isset($mensajeNombre)?"<font color='red'><span class='spanError'>$mensajeNombre</span>":""?><br><br>
 
 
-               <label> Descripcion de la Categoria</label>
-               <textarea class="<?php echo isset($mensajeDescripcion)?'inputError':''?>"  id="dCategorias" name="dCategorias" ></textarea>
+               <label> Descripcion Categoria</label>
+               <textarea class="<?php echo isset($mensajeDescripcion)?'inputError':''?>"  id="dCateg" name="dCateg" ></textarea>
                 <?php echo isset($mensajeDescripcion)?"<font color='red'><span class='spanError'>$mensajeDescripcion</span>":""?><br><br>
+
 
                <input class="anade" type="submit" name="ENVIAR" value="Añadir">
             <br>
@@ -123,19 +127,23 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
         </form>
         <?php
 	//Listado de los productos que Tenemos actualmente en la base de datos
-		echo "<h2>Listado de Nuestras Categorias</h2>";
+		echo "<h2>Listado de Categorias</h2>";
                          listaCategorias($conectar);
 
-			$conexiones = new PDO("mysql:dbname=northwind;host=127.0.0.1","root","");
+   //codigo de subida de archivos
+
+    $exito =False; // para saber si el archivo se ha subido de verdad, creamos un booleano que true y false
+
+
+
+			$conexiones = new PDO("mysql:dbname=Muebles;host=127.0.0.1","root","");
             $conexiones -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $subida =$conexiones -> prepare("insert into productos values (?,?,?)");
-            $subida->execute( $idCategorias,$nombre,$descripcion);
+            $subida = $conectar -> prepare("insert into categorias values (?,?,?)");
+            $subida->execute(array($idCateg,$nombre,$descripcion));
+
 
 
 ?>
-
-
-
 
 
 

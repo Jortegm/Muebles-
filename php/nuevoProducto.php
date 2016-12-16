@@ -1,7 +1,7 @@
 <?php
 
 require_once("./html.php");
-HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./../css/estiloAD.css'");
+HTML::abrirhtml("Nueva Producto","<link rel='stylesheet' type='text/css' href='./../css/estiloAD.css'");
 
 
 ?>
@@ -47,11 +47,7 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
   function listaProductos($conectar){
                 //consulta de la base de datos de muebles con las Categorias;
                   $datos = $conectar ->query ("select ProductosID, NombreProductos, DescripcionProductos,Precio, imagen from Productos");
-                $mysqli = new mysqli("localhost", "root", "", "Muebles");
 
-                 if ( $mysqli ->query("select ProductosID from Productos") == false){
-                     echo"<h2>No has insertado todavia ningún categoria</h2>";
-                 }else{
                   echo "<table border=1px solid black>";
                   echo "<tr>";
                   echo "<td>C&oacute;digo Productos</td>";
@@ -71,10 +67,10 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
                         echo "<td>".$productos["DescripcionProductos"]."</td>";
                         echo "<td>".$productos["Precio"]."</td>";
 						echo "<td>".$productos["imagen"]."</td>";
-						echo "<td ><a href='modificar.php?ProductosID=".$productos['ProductosID']."'>Modificar</a></td>";
-						echo "<td><a href='borrar.php?ProductosID=".$productos['ProductosID']."'>Borrar</a> </td> ";
+						echo "<td ><a href='modificarProducto.php?ProductosID=".$productos['ProductosID']."'>Modificar</a></td>";
+						echo "<td><a href='eliminarProducto.php?ProductosID=".$productos['ProductosID']."'>Borrar</a> </td> ";
                         }
-                 }
+
 
                  echo "</tr>";
 	  			 echo "</table>";
@@ -120,7 +116,17 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
 
         <form method="POST" name="fvalida" action="" enctype="multipart/form-data">
             <br>
-              <label> ID</label>
+		 	 	<label>Categoria</label>
+                <?php
+                    echo "<select type='number' id='nCategorias' name='nCategorias'>";
+					echo "<option>-</option>";
+                    foreach($conectar->query("select DISTINCT NombreCategorias  from categorias") as $NombreCategorias){
+                    echo '<option>'.$NombreCategorias["NombreCategorias"].'</option>';
+                    }
+                    echo "</select>";
+				?><br><br>
+
+                <label> ID</label>
                 <input class="<?php echo isset($mensajeNombre)?'inputError':''?>" type="text" id="IdProduc" name="IdProduc" />
                 <?php echo isset($mensajeNombre)?"<font color='red' font-size:'12px'><span class='spanError'>$mensajeNombre</span>":""?><br><br><br>
 
@@ -167,11 +173,11 @@ HTML::abrirhtml("Nuevo Entrada","<link rel='stylesheet' type='text/css' href='./
 
          }
 
-			$conexiones = new PDO("mysql:dbname=northwind;host=127.0.0.1","root","");
+			$conexiones = new PDO("mysql:dbname=Muebles;host=127.0.0.1","root","");
             $conexiones -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $ft=file_get_contents($destino);
-            $subida = $conexiones -> prepare("insert into productos values (?,?,?,?,?)");
-            $subida->execute($idProducto, $nombre,$descripcion,$precio,$ft);
+            $subida = $conexiones -> prepare("insert into productos values (?,?,?,?,?,?)");
+            $subida->execute(array($idProducto, $nombre,$descripcion,$precio,$ft,$NombreCategorias));
 
 
 	}

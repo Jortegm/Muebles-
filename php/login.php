@@ -26,8 +26,10 @@ HTML::abrirhtml("Accede","<link rel='stylesheet' type='text/css' href='./../css/
                 session_start(); //iniciamos la sesion
                 $_SESSION["logeado"]=1; //creamos una variable logeado=1 (1)
                 $_SESSION["usuario"]=$_POST["usuario"];
-            /*almaceno el usuario como variable de sesion para utilizarlo luego en mi aplicacion*/
-                header ("Location: administrador.php"); //todo es correcto estoy validado abro mi aplicacion web
+			   //Creo la cookie
+			   setcookie("sesion",date("j-n-Y H:i:s"));
+			  /*almaceno el usuario como variable de sesion para utilizarlo luego en mi aplicacion*/
+                header ("Location: administrador.php"); //todo es correcto estoy validado abro pagina de Administracion
              }
             else {
                 //si no existe se va a login.php

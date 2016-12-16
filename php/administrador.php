@@ -4,6 +4,23 @@
 require_once("./html.php");
 HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./../css/estilo.css'");
 
+session_start();
+
+	if(isset($_COOKIE["sesion"]))
+	{
+		$actual=strtotime(date("j-n-Y H:i:s"));
+		$anterior=strtotime($_COOKIE["sesion"]);
+		if($actual-$anterior > 7200)
+		{
+			session_destroy();
+			header("location:login.php");
+		}
+		else
+		{
+			setcookie("sesion",date("j-n-Y H:i:s"));
+		}
+	}
+
 //abrimos y nos conectamos la base de datos de Muebles:
     
     try {
@@ -25,13 +42,17 @@ HTML::abrirhtml("MueblesBBB","<link rel='stylesheet' type='text/css' href='./../
             
             <!-- div para iconos administracion -->
             <div id ="administracion">
-                <div id="registro">
-                <a href="./../index.php" title="Volver">Salir de Administracion </a>
-                </div>
+				<div id="registro">
+					<a href="./../index.php" title="Volver">Salir de Administracion </a>
+			    </div>
+				<?php
+				echo "<h5>Hola ".$_SESSION["usuario"]."</h5>";
+				?>
             </div>
        </div>
 <div id="Cont">
    <h1>Administracion</h1>
+
         <div id ="listaConfiguracion">
            <br/>
            <br/>
