@@ -98,7 +98,7 @@ HTML::abrirhtml("Nueva Categoria","<link rel='stylesheet' type='text/css' href='
                 $mensajeNombre="Rellene el campo nombre";
                 $error=true;
             }
-        }
+		}
     ?>
 
 

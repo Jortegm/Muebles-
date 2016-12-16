@@ -19,8 +19,50 @@ session_start();
 		}
 	}
 
+		try{
+		 $conectar=new PDO("mysql:dbname=Muebles;host=127.0.0.1","root","");//---,usuario, contraseña
+		 $conectar->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		 $datos = $conectar -> prepare ("update categorias SET CategoriaID=?, NombreCategoria=?, DescripcionCategorias=? WHERE CategoriasID = ?");
+		 $idCateg = $_GET["CategoriasID"];
+		 $datos = $conectar -> query ("select * from categorias where CategoriasID=".$idCateg);
+		 $mostrar = $datos ->fetch();
+		}catch (PDOException $e){
 
+			echo $e->getMessage();
+
+		}
 ?>
+<h1>Modificar Producto. . .</h1>
+<?php
+
+    $idCateg="";
+    $nombre="";
+    $descripcion="";
+
+	   if(!empty($_POST)) {
+        //Realizamos el envío
+          $idCateg=$_POST["IdCateg"];
+  		  $nombre=$_POST["nombre"];
+  		  $descripcion=$_POST["descripcion"];
+
+
+              if ($idCateg==""){
+                 $mensajeDescripcion="Rellene el campo descripcion";
+                 $error=true;
+              }
+              if ($nombre=="") {
+                    $mensajePrecio="Rellene el campo precio";
+                    $error=true;
+
+               }
+              if ($descripcion==""){
+                   $mensajeNombre="Rellene el campo nombre";
+                   $error=true;
+			   }
+
+	 }
+
+ ?>
 
 <!-- creamos la cabecera con 3 div donde va el logo, buscador y redes sociales y acceso de los usuarios.-->
         <div id="cabecera1">
@@ -43,43 +85,16 @@ session_start();
        </div>
 
 
-<h1>Modificar Producto. . .</h1>
-
-<?php
-	try{
-     $conexion=new PDO("mysql:dbname=northwind; host=127.0.0.1","root","");//---,usuario, contraseña
-     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-     $datos=$conectar->prepare("update CategoriasID, NombreCategorias DescripcionCategorias from categorias where CategoriasID = ?");//ya tengo los datos en $datos
-     $datos->execute(array($_GET["CategoriasID"]));
-     var_dump($_GET);
-     //var_dump($datos->fetch());
-     //leo datos->fetch()
-     while($categoria=$datos->fetch()){//fila a fila
-          $auxId=$categoria["CategoriasID"];
-          $auxNombre=$categoria["NombreCategorias"];
-		  $auxDescripcion=$categoria["DescripcionCategorias"];
-      }
-
- }catch(PDOException $e){
-     //controlar error
-     echo $e->getMessage();
- }
-$auxId="";
-$auxNombre="";
-$auxDescripcion="";
- ?>
-
- <form action='' method='Post'>
+ <form action='' method='POST'>
     <fieldset>
 	 <legend>Modificar Datos Categoria</legend>
     <label for='Id'>ID de la Categoria: </label>
-    <input type='text' name='id' value='<?php echo $auxId ?>'/>
-    <br>
-    <label for='Categoria'>Nombre Categoria: </label>
+	<input type="number" name="idcategoria" readonly value="<?php echo $mostrar['idCateg']?>">    <br>
+   <label for='Categoria'>Nombre Categoria: </label>
     <input type='text' name='nCateg' value='<?php echo $auxNombre ?>'/>
     <br>
 	<label for='Categoria'>Descripcion Categoria: </label>
-    <input type='text' name='nCateg' value='<?php echo $auxDescripcion ?>'/>
+    <input type='text' name='dCateg' value='<?php echo $auxDescripcion ?>'/>
     <br>
     <input type="submit" value ="Guardar"/>
     </fieldset>
@@ -87,15 +102,14 @@ $auxDescripcion="";
 
 <a href="/administracion.php">Salir</a>
 <?php
-    //si pulsas guardr se guarda
-    if(count($_POST)!=0){
 
-        echo 'Guardar.';
+	if((count($_POST)!=0) && (!$error)){
+		if (count($_POST)!=0){
+			$exito=FALSE;
+			//echo "<script>alert('Archivo subido con exito')</script>";
+			$datos = $conexion->prepare('UPDATE productos set IdCateg=?, nCateg=?, dCateg=?  where IdCateg=?');
+			$datos->execute(array( $_POST["IdCateg" ],$_POST["nCateg"],$_POST["dCateg"]));
+		}
+	}
 
-
-    }else{
-        //nada que guardar
-		echo 'Error en la Subida.';
-
-    }
  ?>
