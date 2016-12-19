@@ -1,21 +1,9 @@
-<?php
-//ob_start();
-
-?>
-<html>
-<head>
-<title>Borramos los datos en la base de datos</title>
-</head>
-<body>
-<?php
-require_once("./nuevoProducto.php");
-
-    $datos=$conectar->prepare("delete from productos where ProductoID=?");
-    $datos->execute(array($_GET["ProductosID"]));
-    header("location:./nuevoProducto.php");
-?>
-</body>
-</html>
-<?php
-//ob_end_flush();
+<?php	//nos conectamos a la bs
+		 $conectar=new PDO("mysql:dbname=Muebles;host=127.0.0.1","root","");//---,usuario, contraseña
+		 $conectar->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		 $datos = $conectar -> prepare ("update productos SET ProductosID=?, NombreProductos=?, DescripcionProductos=?,  precio=? imagen=? WHERE ProductosID = ?");
+		 $idProdu = $_GET["ProductosID"];
+		//eliminamos la fila pasandole codigo
+		 $datos=$conectar->exec("delete from productos where ProductosID=".$idProdu);
+		 header("location: ./nuevoProducto.php");
 ?>

@@ -55,7 +55,7 @@
     margin-top:5%;
     margin-right:8%;
 }
-///**********************************************************************************************/
+//**********************************************************************************************/
 .anadir {
 	height: 200px;
 	font-size:12px;
@@ -72,9 +72,8 @@ textarea{
 	width: 600px;
 }
 
-label, select{
-	float:left;
-	margin-left:5%;
-    font-size: 20px;
+label, select {
+    padding-left: 3%;
+    font-size: 20px 20px 16px;
     color:#1C4B69;
 }

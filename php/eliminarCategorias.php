@@ -1,21 +1,9 @@
-<?php
-//ob_start();
-
-?>
-<html>
-<head>
-<title>Borramos los datos en la base de datos</title>
-</head>
-<body>
-<?php
-require_once("./nuevaCategoria.php");
-
-    $datos=$conectar->prepare("delete from categorias where CategoriasID=?");
-    $datos->execute(array($_GET["CategoriasID"]));
-    header("location:./nuevaCategoria.php");
-?>
-</body>
-</html>
-<?php
-//ob_end_flush();
+<?php	//nos conectamos a la bs
+		 $conectar=new PDO("mysql:dbname=Muebles;host=127.0.0.1","root","");//---,usuario, contraseña
+		 $conectar->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		 $datos = $conectar -> prepare ("update categorias SET CategoriaID=?, NombreCategoria=?, DescripcionCategorias=? WHERE CategoriasID = ?");
+		 $idCateg = $_GET["CategoriasID"];
+		//eliminamos la fila pasandole codigo
+		 $datos=$conectar->exec("delete from categorias where CategoriasID=".$idCateg);
+		 header("location: ./nuevaCategoria.php");
 ?>
